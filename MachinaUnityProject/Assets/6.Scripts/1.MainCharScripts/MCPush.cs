@@ -5,9 +5,8 @@ using UnityEngine;
 
 public class MCPush : MonoBehaviour
 {
-    [SerializeField] GameObject[] pressEImg;
+    [SerializeField] GameObject pressEImg;
     [SerializeField] Collider eCollider;
-    private bool isEPressed = false;
 
     [SerializeField] float interactRange = 2f;
 
@@ -20,10 +19,7 @@ public class MCPush : MonoBehaviour
         //other = eCollider;
         if (other.CompareTag("MovObj"))
         {
-            if (!isEPressed)
-                pressEImg[0].SetActive(true);
-            else if (isEPressed) 
-                pressEImg[0].SetActive(false);
+            pressEImg.SetActive(true);
         }
     }
 
@@ -32,7 +28,7 @@ public class MCPush : MonoBehaviour
         //other = eCollider;
         if (other.CompareTag("MovObj"))
         {
-            pressEImg[0].SetActive(false);
+            pressEImg.SetActive(false);
         }
     }
 
@@ -41,19 +37,15 @@ public class MCPush : MonoBehaviour
         //Debug.DrawRay(transform.position, transform.forward * 2, Color.white);
         if (Input.GetKeyDown(KeyCode.E))
         {
+            pressEImg.SetActive(false);
             if (currentPushable == null)
             {
                 TryStartPush();
-                isEPressed = true;
-                pressEImg[0].SetActive(false);
-                pressEImg[1].SetActive(true);
             }
             else
             {
-                isEPressed = false;
                 currentPushable.StopPush();
                 currentPushable = null;
-                pressEImg[1].SetActive(false);
             }
         }
     }
