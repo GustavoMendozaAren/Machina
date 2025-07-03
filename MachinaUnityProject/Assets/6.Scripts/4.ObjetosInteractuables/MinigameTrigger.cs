@@ -10,12 +10,16 @@ public class MinigameTrigger : MonoBehaviour
 
     private bool isInRange = false;
     private bool isActive = false;
+
+    [HideInInspector] public bool isExiting = false;
+
     private CinemachineFreeLook playerCamera;
 
     void Start()
     {
         playerCamera = FindObjectOfType<CinemachineFreeLook>();
         miniGamePanel.SetActive(false);
+        isExiting = false;
     }
 
     void Update()
@@ -31,6 +35,9 @@ public class MinigameTrigger : MonoBehaviour
                 ExitMinigame();
             }
         }
+
+        if(isExiting)
+            ExitMinigame();
     }
 
     void EnterMinigame()
@@ -67,6 +74,8 @@ public class MinigameTrigger : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        isExiting = true;
     }
 
     void OnTriggerEnter(Collider other)

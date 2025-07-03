@@ -8,13 +8,14 @@ public class MCMovement : MonoBehaviour
     [SerializeField] private float rotationSpeed = 100f;
 
     float vertical;
-    bool isMovVert = false;
     float horizontal;
     Vector3 move;
 
     float moveVertical;
     private Rigidbody rb;
     private Animator anim;
+
+    private bool isRunning = false;
 
     void Start()
     {
@@ -35,41 +36,52 @@ public class MCMovement : MonoBehaviour
 
     void MovimientoPersonaje()
     {
-        vertical = Input.GetAxis("Vertical");   // W/S para moverse
-        // Mover hacia adelante (W/S)
+        vertical = Input.GetAxis("Vertical");
         move = transform.forward * vertical * moveSpeed * Time.fixedDeltaTime;
 
-        if (isMovVert)
-        {
-            horizontal = Input.GetAxis("Horizontal"); // A/D para rotar
-            // Rotar en el eje Y (A y D)
-            transform.Rotate(Vector3.up * horizontal * rotationSpeed * Time.fixedDeltaTime);
-        }
+        horizontal = Input.GetAxis("Horizontal");
+        transform.Rotate(Vector3.up * horizontal * rotationSpeed * Time.fixedDeltaTime);
 
         rb.MovePosition(rb.position + move);
     }
 
     void PlayerMoveAnimations()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        PlayerWalkAnimations();
+
+        if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
         {
-            isMovVert = true;
+            isRunning = true;
+            moveSpeed = 3.3f;
+            anim.SetBool("isRunning", true);
+        }
+        else
+        {
+            isRunning = false;
+            moveSpeed = 1.65f;
+            anim.SetBool("isRunning", false);
+        }
+    }
+
+    private void PlayerWalkAnimations()
+    {
+        if (Input.GetKey(KeyCode.W))
+        {
             anim.SetBool("isWalking", true);
         }
-        if (Input.GetKeyUp(KeyCode.W))
+
+        else
         {
-            isMovVert = false;
             anim.SetBool("isWalking", false);
         }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-            isMovVert = true;
             anim.SetBool("IsBacking", true);
         }
+
         if (Input.GetKeyUp(KeyCode.S))
         {
-            isMovVert = false;
             anim.SetBool("IsBacking", false);
         }
     }

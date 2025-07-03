@@ -37,7 +37,6 @@ public class MCPush : MonoBehaviour
         //Debug.DrawRay(transform.position, transform.forward * 2, Color.white);
         if (Input.GetKeyDown(KeyCode.E))
         {
-            pressEImg.SetActive(false);
             if (currentPushable == null)
             {
                 TryStartPush();
