@@ -635,6 +635,7 @@ MonoBehaviour:
   - {fileID: 3851082033125680464}
   - {fileID: 6231389398571483293}
   - {fileID: 1253594972453574161}
+  puertaActivacion: {fileID: 0}
 --- !u!1 &2303665695724253869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,7 +1680,6 @@ GameObject:
   - component: {fileID: 3644182373641395847}
   - component: {fileID: 3399978802592526441}
   - component: {fileID: 2572402758813804281}
-  - component: {fileID: 4942824324037374346}
   - component: {fileID: 7995507799752962034}
   m_Layer: 0
   m_Name: Virtual Camera
@@ -1794,22 +1794,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &4942824324037374346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6384489835545789788}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c49b4cc203aa6414fae5c798d1d0e7d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EventMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_MaxRayIntersections: 0
 --- !u!114 &7995507799752962034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2659,3 +2643,4 @@ MonoBehaviour:
   miniGamePanel: {fileID: 3851082033125680464}
   textoMiniGame: {fileID: 0}
   player: {fileID: 0}
+  isExiting: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MCMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
+    private float moveSpeed = 1.65f;
     [SerializeField] private float rotationSpeed = 100f;
 
     float vertical;
@@ -52,7 +52,7 @@ public class MCMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
         {
             isRunning = true;
-            moveSpeed = 3.3f;
+            moveSpeed = 3.5f;
             anim.SetBool("isRunning", true);
         }
         else
