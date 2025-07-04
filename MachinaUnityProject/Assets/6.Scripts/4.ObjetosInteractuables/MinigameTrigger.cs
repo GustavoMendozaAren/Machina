@@ -47,7 +47,7 @@ public class MinigameTrigger : MonoBehaviour
         isActive = true;
 
         // Desactivar movimiento del jugador (opcional)
-        player.GetComponent<MCMovement>().enabled = false;
+        player.GetComponent<MCMovement2>().enabled = false;
 
         // Activar minijuego UI
         miniGamePanel.SetActive(true);
@@ -65,7 +65,7 @@ public class MinigameTrigger : MonoBehaviour
     {
         isActive = false;
 
-        player.GetComponent<MCMovement>().enabled = true;
+        player.GetComponent<MCMovement2>().enabled = true;
 
         miniGamePanel.SetActive(false);
 
