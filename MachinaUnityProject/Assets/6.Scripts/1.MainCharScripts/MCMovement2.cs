@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class MCMovement2 : MonoBehaviour
 {
-    public float walkSpeed = 2f;
-    public float runSpeed = 4f;
-    public float rotationSpeed = 100f;
+    [SerializeField] private float walkSpeed = 2f;
+    [SerializeField] private float runSpeed = 4f;
+    [SerializeField] private float rotationSpeed = 100f;
+    [SerializeField] private Transform cameraTransform;
 
     private Animator animator;
     private Rigidbody rb;
@@ -53,17 +54,19 @@ public class MCMovement2 : MonoBehaviour
 
     private void PlayerRotation()
     {
-        rotation = 0f;
-        if (Input.GetKey(KeyCode.A))
-            rotation = -rotationSpeed * Time.fixedDeltaTime;
-        else if (Input.GetKey(KeyCode.D))
-            rotation = rotationSpeed * Time.fixedDeltaTime;
+        //rotation = 0f;
+        //if (Input.GetKey(KeyCode.A))
+        //    rotation = -rotationSpeed * Time.fixedDeltaTime;
+        //else if (Input.GetKey(KeyCode.D))
+        //    rotation = rotationSpeed * Time.fixedDeltaTime;
 
-        if (rotation != 0)
-        {
-            quatTurn = Quaternion.Euler(0f, rotation, 0f);
-            rb.MoveRotation(rb.rotation * quatTurn);
-        }
+        //if (rotation != 0)
+        //{
+        //    quatTurn = Quaternion.Euler(0f, rotation, 0f);
+        //    rb.MoveRotation(rb.rotation * quatTurn);
+        //}
+
+        rb.rotation = Quaternion.Euler(0f, cameraTransform.eulerAngles.y, 0f);
     }
 
     private void PlayerAnims()
