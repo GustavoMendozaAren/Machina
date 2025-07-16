@@ -20,6 +20,8 @@ public class MCMovement2 : MonoBehaviour
     private bool forward;
     private float speed;
 
+    [HideInInspector] public float SpeedForAnim;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -72,7 +74,7 @@ public class MCMovement2 : MonoBehaviour
     private void PlayerAnims()
     {
         // Animación: 0 = idle, 0.5 = caminar, 1 = correr
-        float animSpeed = forward ? (running ? 1f : 0.5f) : 0f;
-        animator.SetFloat("Speed", animSpeed, 0.1f, Time.deltaTime);
+        SpeedForAnim = forward ? (running ? 1f : 0.5f) : 0f;
+        animator.SetFloat("Speed", SpeedForAnim, 0.1f, Time.deltaTime);
     }
 }
