@@ -6,14 +6,12 @@ public class MCMovement2 : MonoBehaviour
 {
     [SerializeField] private float walkSpeed = 2f;
     [SerializeField] private float runSpeed = 4f;
-    [SerializeField] private float rotationSpeed = 100f;
     [SerializeField] private Transform cameraTransform;
 
     private Animator animator;
     private Rigidbody rb;
 
     private Vector3 forwardMove;
-    private float rotation = 0f;
     private Quaternion quatTurn;
 
     private bool running;

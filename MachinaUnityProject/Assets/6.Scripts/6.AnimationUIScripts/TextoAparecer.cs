@@ -16,6 +16,8 @@ public class TextoAparecer : MonoBehaviour
     [SerializeField] private bool wantObj = false;
     [SerializeField] private GameObject[] appearObj;
 
+    private Coroutine coroutine;
+
     void OnEnable()
     {
         if (textComponent == null)
@@ -23,6 +25,11 @@ public class TextoAparecer : MonoBehaviour
             Debug.LogWarning("TextMeshProUGUI no asignado.");
             return;
         }
+
+        if(coroutine != null)
+            StopCoroutine(coroutine);
+
+        coroutine = StartCoroutine(AnimateText());
 
         originalText = textComponent.text;
         StartCoroutine(AnimateText());
@@ -52,6 +59,15 @@ public class TextoAparecer : MonoBehaviour
             {
                 appearObj[i].SetActive(true);
             }
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (coroutine != null)
+        {
+            StopCoroutine(coroutine);
+            coroutine = null;
         }
     }
 }

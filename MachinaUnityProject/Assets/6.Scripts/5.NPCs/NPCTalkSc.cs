@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class NPCTalkSc : MonoBehaviour
@@ -7,9 +8,13 @@ public class NPCTalkSc : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject interactTxt;
     [SerializeField] private GameObject[] textTest;
+    [SerializeField] private GameObject[] textFlechas;
 
     private bool isOnTrigger = false;
     private bool isInteracting = false;
+    private int options = 1;
+
+    [HideInInspector] public bool IsMAccepted = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,11 +30,13 @@ public class NPCTalkSc : MonoBehaviour
         isInteracting = false;
         interactTxt.SetActive(false);
         ActiveDeactiveTxt(false);
+        textFlechas[0].SetActive(false);
+        textFlechas[1].SetActive(false);
     }
 
     private void Update()
     {
-        if (isOnTrigger)
+        if (isOnTrigger && !IsMAccepted)
         {
             if (!isInteracting)
                 interactTxt.SetActive(true);
@@ -38,6 +45,7 @@ public class NPCTalkSc : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
+                options = 1;
                 isInteracting = true;
                 interactTxt.SetActive(false);
                 animator.SetTrigger("Talk");
@@ -46,16 +54,33 @@ public class NPCTalkSc : MonoBehaviour
 
             if (isInteracting)
             {
-                if (Input.GetKeyDown(KeyCode.Y))
+                if (Input.GetKeyDown(KeyCode.A))
                 {
-                    animator.SetTrigger("Cheer");
-                    ActiveDeactiveTxt(false);
+                    textFlechas[0].SetActive(true);
+                    textFlechas[1].SetActive(false);
+                    options = 1;
                 }
 
-                if (Input.GetKeyDown(KeyCode.U))
+                if (Input.GetKeyDown(KeyCode.D))
                 {
-                    animator.SetTrigger("Desp");
-                    ActiveDeactiveTxt(false);
+                    textFlechas[0].SetActive(false);
+                    textFlechas[1].SetActive(true);
+                    options = 2;
+                }
+
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    if(options == 1)
+                    {
+                        animator.SetTrigger("Cheer");
+                        ActiveDeactiveTxt(false);
+                        IsMAccepted = true;
+                    }
+                    else
+                    {
+                        animator.SetTrigger("Desp");
+                        ActiveDeactiveTxt(false);
+                    }
                 }
             }
         }
@@ -63,9 +88,8 @@ public class NPCTalkSc : MonoBehaviour
 
     private void ActiveDeactiveTxt(bool state)
     {
-        for (int i = 0; i < textTest.Length; i++) 
-        {
-            textTest[i].SetActive(state);
-        }
+        textTest[0].SetActive(state);
+        textTest[1].SetActive(state);
+        textTest[2].SetActive(state);
     }
 }
