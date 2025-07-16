@@ -16,7 +16,7 @@ public class TextoAparecer : MonoBehaviour
     [SerializeField] private bool wantObj = false;
     [SerializeField] private GameObject[] appearObj;
 
-    private Coroutine coroutine;
+    private bool isTxtShowing = false;
 
     void OnEnable()
     {
@@ -26,18 +26,15 @@ public class TextoAparecer : MonoBehaviour
             return;
         }
 
-        if(coroutine != null)
-            StopCoroutine(coroutine);
-
-        coroutine = StartCoroutine(AnimateText());
-
         originalText = textComponent.text;
-        StartCoroutine(AnimateText());
+        if(!isTxtShowing)
+            StartCoroutine(AnimateText());
     }
 
     IEnumerator AnimateText()
     {
-        textComponent.text = "";  // Oculta el texto original
+        isTxtShowing = true;
+        textComponent.text = "";
         yield return new WaitForSeconds(initialDelay);
 
         foreach (char letter in originalText)
@@ -59,15 +56,6 @@ public class TextoAparecer : MonoBehaviour
             {
                 appearObj[i].SetActive(true);
             }
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (coroutine != null)
-        {
-            StopCoroutine(coroutine);
-            coroutine = null;
         }
     }
 }

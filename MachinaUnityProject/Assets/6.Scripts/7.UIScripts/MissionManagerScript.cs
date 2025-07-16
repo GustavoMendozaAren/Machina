@@ -26,8 +26,8 @@ public class MissionManagerScript : MonoBehaviour
         mission1Panel[0].SetActive(true);
         yield return new WaitForSeconds(1.5f);
         mission1Panel[1].SetActive(true);
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
         mission1Panel[0].SetActive(false);
-        mission1Panel[1].SetActive(false);
+        //mission1Panel[1].SetActive(false);
     }
 }

@@ -49,7 +49,7 @@ public class NPCTalkSc : MonoBehaviour
                 isInteracting = true;
                 interactTxt.SetActive(false);
                 animator.SetTrigger("Talk");
-                ActiveDeactiveTxt(true);
+                textTest[0].SetActive(true);
             }
 
             if (isInteracting)
@@ -88,7 +88,7 @@ public class NPCTalkSc : MonoBehaviour
 
     private void ActiveDeactiveTxt(bool state)
     {
-        textTest[0].SetActive(state);
+        textTest[0].SetActive(false);
         textTest[1].SetActive(state);
         textTest[2].SetActive(state);
     }
