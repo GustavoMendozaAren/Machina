@@ -6,7 +6,7 @@ public class NPCTalkSc : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject interactTxt;
-    [SerializeField] private GameObject textTest;
+    [SerializeField] private GameObject[] textTest;
 
     private bool isOnTrigger = false;
     private bool isInteracting = false;
@@ -24,6 +24,7 @@ public class NPCTalkSc : MonoBehaviour
         isOnTrigger = false;
         isInteracting = false;
         interactTxt.SetActive(false);
+        ActiveDeactiveTxt(false);
     }
 
     private void Update()
@@ -40,7 +41,7 @@ public class NPCTalkSc : MonoBehaviour
                 isInteracting = true;
                 interactTxt.SetActive(false);
                 animator.SetTrigger("Talk");
-                textTest.SetActive(true);
+                ActiveDeactiveTxt(true);
             }
 
             if (isInteracting)
@@ -48,15 +49,23 @@ public class NPCTalkSc : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Y))
                 {
                     animator.SetTrigger("Cheer");
-                    textTest.SetActive(false);
+                    ActiveDeactiveTxt(false);
                 }
 
                 if (Input.GetKeyDown(KeyCode.U))
                 {
                     animator.SetTrigger("Desp");
-                    textTest.SetActive(false);
+                    ActiveDeactiveTxt(false);
                 }
             }
+        }
+    }
+
+    private void ActiveDeactiveTxt(bool state)
+    {
+        for (int i = 0; i < textTest.Length; i++) 
+        {
+            textTest[i].SetActive(state);
         }
     }
 }

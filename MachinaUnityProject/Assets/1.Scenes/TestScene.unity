@@ -554,7 +554,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 245534888}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.029971072, y: 4.497885e-16, z: 2.385357e-17, w: 0.9995508}
+  m_LocalRotation: {x: -0.029971026, y: -4.3977424e-16, z: -2.2106471e-17, w: 0.9995508}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -865,7 +865,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 351691143}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12899914, y: -0.0000000023979219, z: 3.1193656e-10, w: 0.99164474}
+  m_LocalRotation: {x: 0.12899914, y: 0.00000002955332, z: -0.0000000038444745, w: 0.99164474}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1994,7 +1994,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &892435832
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2126,10 +2126,8 @@ MonoBehaviour:
   textComponent: {fileID: 892435833}
   initialDelay: 0
   delayBetweenCharacters: 0.05
-  wantObj: 1
-  appearObj:
-  - {fileID: 1405879646}
-  - {fileID: 1825785331}
+  wantObj: 0
+  appearObj: []
 --- !u!1 &893996912
 GameObject:
   m_ObjectHideFlags: 0
@@ -2596,7 +2594,7 @@ MonoBehaviour:
   m_XAxis:
     Value: 0
     m_SpeedMode: 0
-    m_MaxSpeed: 200
+    m_MaxSpeed: 250
     m_AccelTime: 0.1
     m_DecelTime: 0.1
     m_InputAxisName: Mouse X
@@ -3447,7 +3445,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -200, y: -483.00003}
+  m_AnchoredPosition: {x: -168, y: -483.00003}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1405879648
@@ -3506,7 +3504,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -3562,7 +3560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textComponent: {fileID: 1405879648}
-  initialDelay: 0.5
+  initialDelay: 2.25
   delayBetweenCharacters: 0.05
   wantObj: 0
   appearObj: []
@@ -3683,7 +3681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1415828148
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3903,7 +3901,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512168911}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11806723, y: -1.5898701e-15, z: -4.4964434e-18, w: 0.99300563}
+  m_LocalRotation: {x: 0.11806723, y: -0.0000000030645475, z: 3.6437112e-10, w: 0.99300563}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4894,7 +4892,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 200, y: -483.00003}
+  m_AnchoredPosition: {x: 220, y: -483.00003}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1825785333
@@ -4951,7 +4949,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -5007,7 +5005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textComponent: {fileID: 1825785333}
-  initialDelay: 0.5
+  initialDelay: 2.25
   delayBetweenCharacters: 0.05
   wantObj: 0
   appearObj: []
@@ -5898,6 +5896,22 @@ PrefabInstance:
       propertyPath: textTest
       value: 
       objectReference: {fileID: 1415828147}
+    - target: {fileID: 5995968272364686257, guid: 047514bbd9c1cf5428dda265551a9a11, type: 3}
+      propertyPath: textTest.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5995968272364686257, guid: 047514bbd9c1cf5428dda265551a9a11, type: 3}
+      propertyPath: textTest.Array.data[0]
+      value: 
+      objectReference: {fileID: 892435831}
+    - target: {fileID: 5995968272364686257, guid: 047514bbd9c1cf5428dda265551a9a11, type: 3}
+      propertyPath: textTest.Array.data[1]
+      value: 
+      objectReference: {fileID: 1405879646}
+    - target: {fileID: 5995968272364686257, guid: 047514bbd9c1cf5428dda265551a9a11, type: 3}
+      propertyPath: textTest.Array.data[2]
+      value: 
+      objectReference: {fileID: 1825785331}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
