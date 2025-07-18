@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MissionManagerScript : MonoBehaviour
 {
-    [SerializeField] private GameObject[] mission1Panel;
+    [SerializeField] private GameObject newMissionTitle;
+    [SerializeField] private GameObject[] missionsTxts;
 
     private NPCTalkSc npcMission1;
 
@@ -23,11 +24,11 @@ public class MissionManagerScript : MonoBehaviour
 
     IEnumerator MissionTxtAppear()
     {
-        mission1Panel[0].SetActive(true);
+        newMissionTitle.SetActive(true);
         yield return new WaitForSeconds(1.5f);
-        mission1Panel[1].SetActive(true);
+        missionsTxts[0].SetActive(true);
         yield return new WaitForSeconds(2f);
-        mission1Panel[0].SetActive(false);
+        newMissionTitle.SetActive(false);
         //mission1Panel[1].SetActive(false);
     }
 }

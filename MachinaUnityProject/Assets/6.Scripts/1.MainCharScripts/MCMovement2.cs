@@ -8,7 +8,7 @@ public class MCMovement2 : MonoBehaviour
     [SerializeField] private float runSpeed = 4f;
     [SerializeField] private Transform cameraTransform;
 
-    private Animator animator;
+    [SerializeField] private Animator animator;
     private Rigidbody rb;
 
     private Vector3 forwardMove;
@@ -23,7 +23,6 @@ public class MCMovement2 : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        animator = GetComponent<Animator>();
     }
 
     void Update()
