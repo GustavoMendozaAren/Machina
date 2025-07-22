@@ -14,11 +14,12 @@ public class MCMovement2 : MonoBehaviour
     private Vector3 forwardMove;
     private Quaternion quatTurn;
 
-    private bool running;
     private bool forward;
+    private bool backward;
+    private bool running;
     private float speed;
 
-    [HideInInspector] public float SpeedForAnim;
+    private float SpeedForAnim;
 
     void Start()
     {
@@ -29,17 +30,17 @@ public class MCMovement2 : MonoBehaviour
     {
         // Movimiento con W
         forward = Input.GetKey(KeyCode.W);
+        backward = Input.GetKey(KeyCode.S);
         running = Input.GetKey(KeyCode.LeftShift);
         speed = running ? runSpeed : walkSpeed;
 
-        
+        PlayerAnims();
     }
 
     private void FixedUpdate()
     {
         PlayerMovementForward();
         PlayerRotation();
-        PlayerAnims(); 
     }
 
     private void PlayerMovementForward()
@@ -47,6 +48,12 @@ public class MCMovement2 : MonoBehaviour
         if (forward)
         {
             Vector3 move = transform.forward * speed * Time.deltaTime;
+            rb.MovePosition(rb.position + move);
+        }
+
+        if (backward)
+        {
+            Vector3 move = transform.forward * (-speed) * Time.deltaTime;
             rb.MovePosition(rb.position + move);
         }
     }
@@ -71,7 +78,20 @@ public class MCMovement2 : MonoBehaviour
     private void PlayerAnims()
     {
         // Animación: 0 = idle, 0.5 = caminar, 1 = correr
-        SpeedForAnim = forward ? (running ? 1f : 0.5f) : 0f;
+
+        if (forward)
+        {
+            SpeedForAnim = running ? 1f : 0.5f;
+        }
+        else if (backward)
+        {
+            SpeedForAnim = -1f;
+        }
+        else
+        {
+            SpeedForAnim = 0f;
+        }
+
         animator.SetFloat("Speed", SpeedForAnim, 0.1f, Time.deltaTime);
     }
 }

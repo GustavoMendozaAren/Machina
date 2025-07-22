@@ -20,7 +20,7 @@ public class MiniGameButtonsTest : MonoBehaviour
         panelsMiniGame[1].SetActive(true);
         panelsMiniGame[2].SetActive(false);
         puertaActivacion.isDoorOpen = true;
-        minigameTrigger.isExiting = true;
+        minigameTrigger.ExitMinigame();
     }
 
     public void ButonIncorrect()

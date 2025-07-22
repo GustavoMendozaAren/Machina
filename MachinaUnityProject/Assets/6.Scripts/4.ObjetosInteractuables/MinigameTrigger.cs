@@ -6,20 +6,19 @@ public class MinigameTrigger : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera minigameCam;
     [SerializeField] private GameObject miniGamePanel;
     [SerializeField] private GameObject textoMiniGame;
-    [SerializeField] private GameObject player;
 
     private bool isInRange = false;
     private bool isActive = false;
 
-    [HideInInspector] public bool isExiting = false;
-
     private CinemachineFreeLook playerCamera;
+    private MCMovement2 playerMov;
 
     void Start()
     {
         playerCamera = FindObjectOfType<CinemachineFreeLook>();
+        playerMov = FindObjectOfType<MCMovement2>();
+
         miniGamePanel.SetActive(false);
-        isExiting = false;
     }
 
     void Update()
@@ -35,19 +34,15 @@ public class MinigameTrigger : MonoBehaviour
                 ExitMinigame();
             }
         }
-
-        if(isExiting)
-            ExitMinigame();
     }
 
     void EnterMinigame()
     {
+        playerMov.enabled = false;
+
         textoMiniGame.SetActive(false);
 
         isActive = true;
-
-        // Desactivar movimiento del jugador (opcional)
-        player.GetComponent<MCMovement2>().enabled = false;
 
         // Activar minijuego UI
         miniGamePanel.SetActive(true);
@@ -61,11 +56,11 @@ public class MinigameTrigger : MonoBehaviour
         Cursor.visible = true;
     }
 
-    void ExitMinigame()
+    public void ExitMinigame()
     {
-        isActive = false;
+        playerMov.enabled = true;
 
-        player.GetComponent<MCMovement2>().enabled = true;
+        isActive = false;
 
         miniGamePanel.SetActive(false);
 
@@ -74,8 +69,6 @@ public class MinigameTrigger : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
-        isExiting = true;
     }
 
     void OnTriggerEnter(Collider other)

@@ -7,6 +7,7 @@ public class NPCTalkSc : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject interactTxt;
+    [SerializeField] private GameObject usarTeclasTxt;
     [SerializeField] private GameObject[] textTest;
     [SerializeField] private GameObject[] textFlechas;
 
@@ -29,6 +30,7 @@ public class NPCTalkSc : MonoBehaviour
         isOnTrigger = false;
         isInteracting = false;
         interactTxt.SetActive(false);
+        usarTeclasTxt.SetActive(false);
         ActiveDeactiveTxt(false);
         textFlechas[0].SetActive(false);
         textFlechas[1].SetActive(false);
@@ -41,7 +43,10 @@ public class NPCTalkSc : MonoBehaviour
             if (!isInteracting)
                 interactTxt.SetActive(true);
             else
+            {
                 interactTxt.SetActive(false);
+                usarTeclasTxt.SetActive(true);
+            }
 
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -70,7 +75,9 @@ public class NPCTalkSc : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    if(options == 1)
+                    usarTeclasTxt.SetActive(false);
+
+                    if (options == 1)
                     {
                         animator.SetTrigger("Cheer");
                         ActiveDeactiveTxt(false);

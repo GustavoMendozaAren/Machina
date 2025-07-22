@@ -26,7 +26,7 @@ public class PauseManager : MonoBehaviour
 
     private void PausePanelActive()
     {
-        if (Input.GetKey(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             Time.timeScale = 0.0f;
             pausePanel.SetActive(true);
@@ -49,5 +49,11 @@ public class PauseManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         SceneManager.LoadScene(0);
+    }
+
+    public void HideMpuseBtn()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }
