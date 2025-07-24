@@ -8,14 +8,11 @@ public class MainMenuManager : MonoBehaviour
     [Header("PANELES")]
     [SerializeField] private GameObject[] paneles;
 
-
-    [Header("BOTONES ANIMS")]
-    [SerializeField] private GameObject[] botones;
-    // BUTTONS
+    [SerializeField] private GameObject blockPanel;
 
     private void Start()
     {
-        StartCoroutine(AnimacionesDeBotones(true));
+        StartCoroutine(AnimacionesDeBotones());
     }
 
     public void PlayBtn()
@@ -28,8 +25,6 @@ public class MainMenuManager : MonoBehaviour
         paneles[0].SetActive(false);
         paneles[1].SetActive(true);
         paneles[2].SetActive(false);
-
-        MainMenuBtnsAnims(false);
     }
 
     public void OptionsCloseBtn()
@@ -38,7 +33,7 @@ public class MainMenuManager : MonoBehaviour
         paneles[1].SetActive(false);
         paneles[2].SetActive(false);
 
-        StartCoroutine(AnimacionesDeBotones(true));
+        StartCoroutine(AnimacionesDeBotones());
     }
 
     public void CreditsOpenBtn()
@@ -46,8 +41,6 @@ public class MainMenuManager : MonoBehaviour
         paneles[0].SetActive(false);
         paneles[1].SetActive(false);
         paneles[2].SetActive(true);
-
-        MainMenuBtnsAnims(false);
     }
 
     public void CreditsCloseBtn()
@@ -56,20 +49,14 @@ public class MainMenuManager : MonoBehaviour
         paneles[1].SetActive(false);
         paneles[2].SetActive(false);
 
-        StartCoroutine(AnimacionesDeBotones(true));
+        StartCoroutine(AnimacionesDeBotones());
     }
 
-    IEnumerator AnimacionesDeBotones(bool state)
+    IEnumerator AnimacionesDeBotones()
     {
+        blockPanel.SetActive(true);
         yield return new WaitForSeconds(3.5f);
-        MainMenuBtnsAnims(state);
+        blockPanel.SetActive(false);
     }
 
-    private void MainMenuBtnsAnims(bool state)
-    {
-        botones[0].SetActive(state);
-        botones[1].SetActive(state);
-        botones[2].SetActive(state);
-        botones[3].SetActive(!state);
-    }
 }

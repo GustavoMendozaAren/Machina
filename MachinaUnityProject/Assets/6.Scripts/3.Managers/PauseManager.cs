@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class PauseManager : MonoBehaviour
 {
     [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject optionInGPanel;
+    private bool isPaused = false;
 
     void Start()
     {
@@ -15,7 +17,7 @@ public class PauseManager : MonoBehaviour
 
     private void Update()
     {
-        PausePanelActive();
+        StandByPanelActive();
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -24,25 +26,29 @@ public class PauseManager : MonoBehaviour
         }
     }
 
-    private void PausePanelActive()
+    private void StandByPanelActive()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) && !isPaused)
         {
             Time.timeScale = 0.0f;
             pausePanel.SetActive(true);
 
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+
+            isPaused = true;
         }
     }
 
-    public void PausePanelDeactive()
+    public void StandByPanelDeactive()
     {
         Time.timeScale = 1.0f;
         pausePanel.SetActive(false);
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        isPaused = false;
     }
 
     public void MainMenuBtn()
@@ -55,5 +61,15 @@ public class PauseManager : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    public void OptionsInGActive()
+    {
+        optionInGPanel.SetActive(true);
+    }
+
+    public void OptionsInGameDeactive()
+    {
+        optionInGPanel.SetActive(false);
     }
 }
