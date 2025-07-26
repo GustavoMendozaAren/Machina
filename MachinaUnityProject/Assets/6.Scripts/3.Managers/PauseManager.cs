@@ -66,10 +66,12 @@ public class PauseManager : MonoBehaviour
     public void OptionsInGActive()
     {
         optionInGPanel.SetActive(true);
+        pausePanel.SetActive(false);
     }
 
     public void OptionsInGameDeactive()
     {
         optionInGPanel.SetActive(false);
+        pausePanel.SetActive(true);
     }
 }
