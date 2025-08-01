@@ -28,7 +28,7 @@ public class PauseManager : MonoBehaviour
 
     private void StandByPanelActive()
     {
-        if (Input.GetKeyDown(KeyCode.P) && !isPaused)
+        if (Input.GetKeyDown(KeyCode.Tab) && !isPaused)
         {
             Time.timeScale = 0.0f;
             pausePanel.SetActive(true);
