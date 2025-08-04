@@ -8,7 +8,7 @@ public class InspectorQuestDescripcion : QuestDescripcion
     public override void ConfigurarQuestUI(Quest quest)
     {
         base.ConfigurarQuestUI(quest);
-        questRecompensa.text = $"-{quest.RecompensaOro} credits";
+        questRecompensa.text = $"{quest.RecompensaOro} credits";
     }
 
     public void AceptarQuest()
@@ -16,6 +16,7 @@ public class InspectorQuestDescripcion : QuestDescripcion
         if (QuestPorCompletar == null)
             return;
 
+        QuestPorCompletar.QuestAceptado = true;
         QuestManager.Instance.AniadirQuest(QuestPorCompletar);
         gameObject.SetActive(false);
     }

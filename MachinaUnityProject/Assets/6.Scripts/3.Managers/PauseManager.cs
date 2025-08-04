@@ -11,8 +11,7 @@ public class PauseManager : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked; // Bloquea el mouse al centro
-        Cursor.visible = false; // Oculta el cursor
+        HideCursorMouse();
     }
 
     private void Update()
@@ -21,8 +20,7 @@ public class PauseManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            ShowCursorMouse();
         }
     }
 
@@ -33,8 +31,7 @@ public class PauseManager : MonoBehaviour
             Time.timeScale = 0.0f;
             pausePanel.SetActive(true);
 
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            ShowCursorMouse();
 
             isPaused = true;
         }
@@ -45,8 +42,7 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1.0f;
         pausePanel.SetActive(false);
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        HideCursorMouse();
 
         isPaused = false;
     }
@@ -57,10 +53,16 @@ public class PauseManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void HideMpuseBtn()
+    public void HideCursorMouse()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    public void ShowCursorMouse()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void OptionsInGActive()

@@ -18,6 +18,9 @@ public class NPCDialogo : ScriptableObject
     //public Sprite Icono;
     public bool ContieneInteraccionExtra;
     public InteraccionExtraNPC InteraccionExtra;
+    public bool IsEspetial;
+    public string MisionID;
+    public int CantidadProgreso;
 
     [Header("SALUDO")]
     [TextArea] public string Saludo;

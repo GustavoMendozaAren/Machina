@@ -62,14 +62,18 @@ public class QuestManager : Singleton<QuestManager>
             return;
 
         MonedasManager.Instance.AnniadirMonedas(QuestPorReclamar.RecompensaOro);
-        panelQuestCompletado.SetActive(false);
+        OcultarPanelQuestCompletado();
         QuestPorReclamar = null;
     }
 
     public void AniadirProgreso(string questID, int cantidad)
     {
         Quest questPorActualizar = QuestExiste(questID);
-        questPorActualizar.AniadirProgreso(cantidad);
+
+        if (questPorActualizar.QuestAceptado)
+        {
+            questPorActualizar.AniadirProgreso(cantidad);
+        }
     }
 
     private Quest QuestExiste(string questID)
@@ -84,7 +88,7 @@ public class QuestManager : Singleton<QuestManager>
 
     private void MostrarQuestCompletado(Quest questCompletado)
     {
-        panelQuestCompletado.SetActive(true);
+        MostrarPanelQuestCompletado();
         questNombre.text = questCompletado.Nombre;
         questRecompensaOro.text = questCompletado.RecompensaOro.ToString();
     }
@@ -99,8 +103,29 @@ public class QuestManager : Singleton<QuestManager>
         }
     }
 
+    // EXTRA FOR HIDE MOUSE
+
+    private void MostrarPanelQuestCompletado()
+    {
+        panelQuestCompletado.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    private void OcultarPanelQuestCompletado()
+    {
+        panelQuestCompletado.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     private void OnEnable()
     {
+        for (int i = 0; i < questDisponibles.Length; i++)
+        {
+            questDisponibles[i].ResetQuest();
+        }
+
         Quest.EventoQuestCompletado += QuestCompletadoRespuesta;
     }
 

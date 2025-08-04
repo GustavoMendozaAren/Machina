@@ -239,7 +239,6 @@ MonoBehaviour:
   runSpeed: 3.75
   cameraTransform: {fileID: 0}
   animator: {fileID: 3362644257001227254}
-  SpeedForAnim: 0
 --- !u!114 &5517655171161080627
 MonoBehaviour:
   m_ObjectHideFlags: 0

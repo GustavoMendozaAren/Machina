@@ -15,6 +15,9 @@ MonoBehaviour:
   Nombre: Chico Misiones
   ContieneInteraccionExtra: 1
   InteraccionExtra: 0
-  Saludo: Te puedo dar esta nave si me traes unas cosas
+  IsEspetial: 0
+  MisionID: 
+  CantidadProgreso: 0
+  Saludo: Te puedo decir como ganarte esta nave si me haces unos mandados
   Conversacion: []
   Despedida: 

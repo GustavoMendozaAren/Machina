@@ -25,6 +25,9 @@ public class DialogoManager : Singleton<DialogoManager>
     {
         if (NPCDisponible == null)
         {
+            AbrirCerrarPanelDialgo(false);
+            dialogosSecuencia.Clear();
+            //despedidaMostrada = false;
             return;
         }
 
@@ -38,6 +41,9 @@ public class DialogoManager : Singleton<DialogoManager>
         {
             if (despedidaMostrada)
             {
+                if(NPCDisponible.Dialogo.IsEspetial)
+                    QuestManager.Instance.AniadirProgreso(NPCDisponible.Dialogo.MisionID, NPCDisponible.Dialogo.CantidadProgreso);
+
                 AbrirCerrarPanelDialgo(false);
                 despedidaMostrada = false;
                 return;
@@ -65,6 +71,7 @@ public class DialogoManager : Singleton<DialogoManager>
     private void ConfigurarPanel(NPCDialogo npcDialogo)
     {
         AbrirCerrarPanelDialgo(true);
+
         CargarDialgosSecuencia(npcDialogo);
 
         npcNombreTxt.text = $"{npcDialogo.Nombre}:";
@@ -79,10 +86,12 @@ public class DialogoManager : Singleton<DialogoManager>
             return;
         }
 
-        for(int i = 0; i < npcDialogo.Conversacion.Length; i++)
+        for (int i = 0; i < npcDialogo.Conversacion.Length; i++)
         {
             dialogosSecuencia.Enqueue(npcDialogo.Conversacion[i].Oracion);
         }
+
+        //Debug.Log(dialogosSecuencia.);
     }
 
     private void ContinuarDialogo()

@@ -24,9 +24,20 @@ public class UIManager : Singleton<UIManager>
         monedasTxt.text = MonedasManager.Instance.MonedasTotales.ToString();
     }
 
-    public void AbrirCerrarPanelDeMisiones()
+    public void CerrarPanelDeMisiones()
     {
-        panelDeMisiones.SetActive(!panelDeMisiones.activeSelf);
+        panelDeMisiones.SetActive(false);
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    private void AbrirPanelDeMisiones()
+    {
+        panelDeMisiones.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     private void AbrirCerrarPanelDePersonajeQuest()
@@ -39,7 +50,7 @@ public class UIManager : Singleton<UIManager>
         switch (tipoInteraccion)
         {
             case InteraccionExtraNPC.Quest:
-                AbrirCerrarPanelDeMisiones();
+                AbrirPanelDeMisiones();
                 break;
             case InteraccionExtraNPC.Tienda:
                 break;

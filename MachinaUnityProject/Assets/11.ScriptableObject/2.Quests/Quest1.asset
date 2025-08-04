@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e323e9e3e2666c4daff9227d4cca044, type: 3}
   m_Name: Quest1
   m_EditorClassIdentifier: 
-  Nombre: Mision 1
+  Nombre: Pedro
   ID: M1
-  CantidadObjetivo: 10
+  CantidadObjetivo: 1
   Descripcion: Habla con Pedro
   RecompensaOro: 10
   CantidadActual: 0
