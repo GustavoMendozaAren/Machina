@@ -7,6 +7,7 @@ public class PauseManager : MonoBehaviour
 {
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject optionInGPanel;
+    [SerializeField] private GameObject controlsPanel;
     private bool isPaused = false;
 
     void Start()
@@ -74,6 +75,18 @@ public class PauseManager : MonoBehaviour
     public void OptionsInGameDeactive()
     {
         optionInGPanel.SetActive(false);
+        pausePanel.SetActive(true);
+    }
+
+    public void ControlsPanelOpen()
+    {
+        controlsPanel.SetActive(true);
+        pausePanel.SetActive(false);
+    }
+
+    public void ControlsPanelClosed()
+    {
+        controlsPanel.SetActive(false);
         pausePanel.SetActive(true);
     }
 }

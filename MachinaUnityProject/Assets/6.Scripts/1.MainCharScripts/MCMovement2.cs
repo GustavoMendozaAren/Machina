@@ -85,7 +85,7 @@ public class MCMovement2 : MonoBehaviour
         }
         else if (backward)
         {
-            SpeedForAnim = -1f;
+            SpeedForAnim = running ? -1f : -0.5f;
         }
         else
         {
