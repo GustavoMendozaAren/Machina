@@ -10,6 +10,8 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private GameObject controlsPanel;
     private bool isPaused = false;
 
+    private bool cursorShow = false;
+
     void Start()
     {
         HideCursorMouse();
@@ -19,9 +21,9 @@ public class PauseManager : MonoBehaviour
     {
         StandByPanelActive();
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
-            ShowCursorMouse();
+            HideShowCursorRightClick();
         }
     }
 
@@ -54,18 +56,6 @@ public class PauseManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void HideCursorMouse()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
-
-    public void ShowCursorMouse()
-    {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-    }
-
     public void OptionsInGActive()
     {
         optionInGPanel.SetActive(true);
@@ -88,5 +78,35 @@ public class PauseManager : MonoBehaviour
     {
         controlsPanel.SetActive(false);
         pausePanel.SetActive(true);
+    }
+
+    // CURSOR STUFF
+
+    public void HideCursorMouse()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    public void ShowCursorMouse()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    private void HideShowCursorRightClick()
+    {
+        cursorShow = !cursorShow;
+
+        if (cursorShow)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 }
