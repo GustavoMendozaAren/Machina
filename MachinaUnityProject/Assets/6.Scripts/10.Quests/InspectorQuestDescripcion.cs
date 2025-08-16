@@ -8,7 +8,7 @@ public class InspectorQuestDescripcion : QuestDescripcion
     public override void ConfigurarQuestUI(Quest quest)
     {
         base.ConfigurarQuestUI(quest);
-        questRecompensa.text = $"{quest.RecompensaOro} credits";
+        questRecompensa.text = $"Credits : {quest.RecompensaOro}";
     }
 
     public void AceptarQuest()

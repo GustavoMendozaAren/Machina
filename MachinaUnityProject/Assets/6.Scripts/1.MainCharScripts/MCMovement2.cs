@@ -94,4 +94,9 @@ public class MCMovement2 : MonoBehaviour
 
         animator.SetFloat("Speed", SpeedForAnim, 0.1f, Time.deltaTime);
     }
+
+    public void SpeedForAnimToZero()
+    {
+        SpeedForAnim = 0f;
+    }
 }
