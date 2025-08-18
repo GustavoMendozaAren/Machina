@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject panelPersonajeDeMisiones;
 
     [SerializeField] private TextMeshProUGUI monedasTxt;
+    private bool questState;
 
     private void Update()
     {
@@ -42,7 +44,19 @@ public class UIManager : Singleton<UIManager>
 
     private void AbrirCerrarPanelDePersonajeQuest()
     {
-        panelPersonajeDeMisiones.SetActive(!panelPersonajeDeMisiones.activeSelf);
+        questState = !questState;
+        if (questState)
+        {
+            panelPersonajeDeMisiones.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            panelPersonajeDeMisiones.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 
     public void AbrirPanelInteraccion(InteraccionExtraNPC tipoInteraccion)

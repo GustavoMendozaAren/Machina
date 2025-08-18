@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e323e9e3e2666c4daff9227d4cca044, type: 3}
-  m_Name: Quest2
+  m_Name: Quest4
   m_EditorClassIdentifier: 
-  Nombre: Mision 2
-  ID: M2
+  Nombre: Mision 4
+  ID: M4
   CantidadObjetivo: 1
-  Descripcion: Talk to the purple robot
-  RecompensaOro: 15
+  Descripcion: Unlock the door
+  RecompensaOro: 0
   CantidadActual: 0
   QuestCompletadoCheck: 0
   QuestAceptado: 0

@@ -15,8 +15,8 @@ MonoBehaviour:
   Nombre: Mision 3
   ID: M3
   CantidadObjetivo: 1
-  Descripcion: Habla con Pedro
-  RecompensaOro: 0
-  RecompensaExp: 0
+  Descripcion: Talk to the orange robot
+  RecompensaOro: 15
   CantidadActual: 0
-  QuestCompletada: 0
+  QuestCompletadoCheck: 0
+  QuestAceptado: 0

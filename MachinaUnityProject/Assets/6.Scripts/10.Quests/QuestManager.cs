@@ -28,14 +28,6 @@ public class QuestManager : Singleton<QuestManager>
         CargarQuestEnIspector();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            AniadirProgreso("M1", 1);
-        }
-    }
-
     private void CargarQuestEnIspector()
     {
         for (int i = 0; i < questDisponibles.Length; i++)

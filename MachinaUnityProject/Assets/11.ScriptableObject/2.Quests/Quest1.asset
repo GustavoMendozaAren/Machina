@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e323e9e3e2666c4daff9227d4cca044, type: 3}
   m_Name: Quest1
   m_EditorClassIdentifier: 
-  Nombre: Pedro
+  Nombre: Mision 1
   ID: M1
   CantidadObjetivo: 1
-  Descripcion: Habla con Pedro
-  RecompensaOro: 10
+  Descripcion: Talk to the cyan robot
+  RecompensaOro: 15
   CantidadActual: 0
   QuestCompletadoCheck: 0
+  QuestAceptado: 0
