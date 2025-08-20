@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -12,6 +13,9 @@ public class UIManager : Singleton<UIManager>
 
     [SerializeField] private TextMeshProUGUI monedasTxt;
     private bool questState;
+
+    [SerializeField] private CinemachineFreeLook freeLookCamera;
+    private bool isCameraRotating = true;
 
     private void Update()
     {
@@ -30,16 +34,18 @@ public class UIManager : Singleton<UIManager>
     {
         panelDeMisiones.SetActive(false);
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        OcultarCursormethod();
+
+        ContinueCamerarotation();
     }
 
     private void AbrirPanelDeMisiones()
     {
         panelDeMisiones.SetActive(true);
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        MostrarCursorMethod();
+
+        StopCameraRotation();
     }
 
     private void AbrirCerrarPanelDePersonajeQuest()
@@ -48,15 +54,53 @@ public class UIManager : Singleton<UIManager>
         if (questState)
         {
             panelPersonajeDeMisiones.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            MostrarCursorMethod();
         }
         else
         {
             panelPersonajeDeMisiones.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            OcultarCursormethod();
         }
+
+        AlternCameraRotation();
+    }
+
+    private void AlternCameraRotation()
+    {
+        isCameraRotating = !isCameraRotating;
+
+        if (isCameraRotating)
+        {
+            ContinueCamerarotation();
+        }
+        else
+        {
+            StopCameraRotation();
+        }
+    }
+
+    private void MostrarCursorMethod()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    private void OcultarCursormethod()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
+    private void ContinueCamerarotation()
+    {
+        freeLookCamera.m_XAxis.m_MaxSpeed = 220f;
+        freeLookCamera.m_YAxis.m_MaxSpeed = 1.5f;
+    }
+
+    private void StopCameraRotation()
+    {
+        freeLookCamera.m_XAxis.m_MaxSpeed = 0f;
+        freeLookCamera.m_YAxis.m_MaxSpeed = 0f;
     }
 
     public void AbrirPanelInteraccion(InteraccionExtraNPC tipoInteraccion)

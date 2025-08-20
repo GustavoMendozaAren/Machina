@@ -16,6 +16,8 @@ public class CameraSensitivityUI : MonoBehaviour
     [SerializeField] private float minYSpeed = 0f;
     [SerializeField] private float maxYSpeed = 10f;
 
+    private bool isCameraRotating = true;
+
     private void Start()
     {
         // Inicializa los sliders con los valores actuales de la cámara
@@ -51,15 +53,19 @@ public class CameraSensitivityUI : MonoBehaviour
         }
     }
 
-    public void StopCameraRotation()
+    public void AlternCameraRotation()
     {
-        freeLookCamera.m_XAxis.m_MaxSpeed = 0f;
-        freeLookCamera.m_YAxis.m_MaxSpeed = 0f;
-    }
+        isCameraRotating |= !isCameraRotating;
 
-    public void ContinueCameraRotation()
-    {
-        freeLookCamera.m_XAxis.m_MaxSpeed = 220f;
-        freeLookCamera.m_YAxis.m_MaxSpeed = 1.5f;
+        if (isCameraRotating)
+        {
+            freeLookCamera.m_XAxis.m_MaxSpeed = 220f;
+            freeLookCamera.m_YAxis.m_MaxSpeed = 1.5f;
+        }
+        else
+        {
+            freeLookCamera.m_XAxis.m_MaxSpeed = 0f;
+            freeLookCamera.m_YAxis.m_MaxSpeed = 0f;
+        } 
     }
 }
