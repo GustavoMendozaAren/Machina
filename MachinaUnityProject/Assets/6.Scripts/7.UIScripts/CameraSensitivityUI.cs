@@ -50,4 +50,16 @@ public class CameraSensitivityUI : MonoBehaviour
             freeLookCamera.m_YAxis.m_MaxSpeed = value;
         }
     }
+
+    public void StopCameraRotation()
+    {
+        freeLookCamera.m_XAxis.m_MaxSpeed = 0f;
+        freeLookCamera.m_YAxis.m_MaxSpeed = 0f;
+    }
+
+    public void ContinueCameraRotation()
+    {
+        freeLookCamera.m_XAxis.m_MaxSpeed = 220f;
+        freeLookCamera.m_YAxis.m_MaxSpeed = 1.5f;
+    }
 }
