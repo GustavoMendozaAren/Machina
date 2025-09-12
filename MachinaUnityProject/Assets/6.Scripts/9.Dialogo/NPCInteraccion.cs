@@ -26,5 +26,4 @@ public class NPCInteraccion : MonoBehaviour
             npcInteractTxt.SetActive(false);
         }
     }
-
 }

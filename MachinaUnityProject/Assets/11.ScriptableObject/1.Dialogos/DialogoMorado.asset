@@ -18,6 +18,6 @@ MonoBehaviour:
   IsEspetial: 1
   MisionID: M2
   CantidadProgreso: 1
-  Saludo: Hola
+  Saludo: ...
   Conversacion: []
-  Despedida: Adios
+  Despedida: ...

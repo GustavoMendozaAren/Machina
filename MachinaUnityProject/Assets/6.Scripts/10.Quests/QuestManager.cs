@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -20,6 +21,8 @@ public class QuestManager : Singleton<QuestManager>
     [SerializeField] private GameObject panelQuestCompletado;
     [SerializeField] private TextMeshProUGUI questNombre;
     [SerializeField] private TextMeshProUGUI questRecompensaOro;
+
+    [SerializeField] private CinemachineFreeLook freeLookCamera;
 
     public Quest QuestPorReclamar { get; private set; }
 
@@ -73,7 +76,9 @@ public class QuestManager : Singleton<QuestManager>
         for(int i = 0;i < questDisponibles.Length; i++)
         {
             if (questDisponibles[i].ID == questID)
+            {
                 return questDisponibles[i];
+            }
         }
         return null;
     }
@@ -102,6 +107,9 @@ public class QuestManager : Singleton<QuestManager>
         panelQuestCompletado.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        freeLookCamera.m_XAxis.m_MaxSpeed = 0f;
+        freeLookCamera.m_YAxis.m_MaxSpeed = 0f;
     }
 
     private void OcultarPanelQuestCompletado()
@@ -109,6 +117,9 @@ public class QuestManager : Singleton<QuestManager>
         panelQuestCompletado.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        freeLookCamera.m_XAxis.m_MaxSpeed = 220f;
+        freeLookCamera.m_YAxis.m_MaxSpeed = 1.5f;
     }
 
     private void OnEnable()

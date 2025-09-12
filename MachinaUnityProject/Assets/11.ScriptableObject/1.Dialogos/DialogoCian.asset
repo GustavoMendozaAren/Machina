@@ -18,6 +18,6 @@ MonoBehaviour:
   IsEspetial: 1
   MisionID: M1
   CantidadProgreso: 1
-  Saludo: Hola
+  Saludo: This is where the energy of this region comes from.
   Conversacion: []
-  Despedida: Adios
+  Despedida: Other regions have similar areas.

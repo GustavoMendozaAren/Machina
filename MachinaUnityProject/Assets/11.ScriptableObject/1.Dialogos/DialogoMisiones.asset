@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796015e16104f7c40b3e955be4ef177e, type: 3}
   m_Name: DialogoMisiones
   m_EditorClassIdentifier: 
-  Nombre: Chico Misiones
+  Nombre: Red
   ContieneInteraccionExtra: 1
   InteraccionExtra: 0
   IsEspetial: 0
   MisionID: 
   CantidadProgreso: 0
-  Saludo: Si haces estas misiones podras salir de este nivel
+  Saludo: I can give you credit if you do some tasks.
   Conversacion: []
   Despedida: 

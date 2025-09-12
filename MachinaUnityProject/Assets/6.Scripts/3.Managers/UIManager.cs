@@ -17,6 +17,11 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private CinemachineFreeLook freeLookCamera;
     private bool isCameraRotating = true;
 
+    private void Start()
+    {
+        ContinueCamerarotation();
+    }
+
     private void Update()
     {
         ActualizarUIPersonaje();
